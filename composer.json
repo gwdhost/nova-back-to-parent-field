@@ -11,13 +11,13 @@
   },
   "autoload": {
     "psr-4": {
-      "Gwd\\BackToParentField\\": "src/"
+      "Gwd\\NovaBackToParentField\\": "src/"
     }
   },
   "extra": {
     "laravel": {
       "providers": [
-        "Gwd\\BackToParentField\\FieldServiceProvider"
+        "Gwd\\NovaBackToParentField\\FieldServiceProvider"
       ]
     }
   },

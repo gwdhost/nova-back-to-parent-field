@@ -1,6 +1,6 @@
 <?php
 
-namespace Gwd\BackToParentField;
+namespace Gwd\NovaBackToParentField;
 
 use Illuminate\Support\ServiceProvider;
 use Laravel\Nova\Events\ServingNova;
