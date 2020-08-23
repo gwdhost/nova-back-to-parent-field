@@ -1,22 +1,24 @@
 <template>
-    <div class="custom-detail-header" v-if="backDetailUrl">
+    <div class="custom-header" v-if="backUrl">
         <router-link
             class="no-underline dim text-primary font-bold"
-            :to="backDetailUrl"
-            >{{ backDetailLabel }}</router-link
-        >
-        <div class="custom-detail-header__right" v-html="backDetailRight"></div>
+            :to="backUrl"
+            >
+            {{ backLabel }}
+        </router-link>
+
+        <div class="custom-header__right" v-html="backRight"></div>
     </div>
 </template>
 
 <script>
 export default {
-    name: "CustomDetailHeader",
+    name: "CustomHeader",
     props: ["resource", "resourceName", "resourceId"],
     computed: {
-        backDetailUrl() {
-            if(this.resource && this.resource.backDetailUrl){
-                const url = this.resource.backDetailUrl;
+        backUrl() {
+            if(this.resource && (this.resource.backDetailUrl || this.resource.backUrl)){
+                const url = this.resource.backDetailUrl || this.resource.backUrl;
 
                 if(url.match(/^https?:\/\//)){
                     const args = url.replace(/^https?:\/\//, '').split('/');
@@ -30,24 +32,24 @@ export default {
 
             return false;
         },
-        backDetailLabel() {
-            return this.resource && this.resource.backDetailLabel;
+        backLabel() {
+            return this.resource && (this.resource.backDetailLabel || this.resource.backLabel);
         },
-        backDetailRight() {
-            return this.resource && this.resource.backDetailRight;
+        backRight() {
+            return this.resource && (this.resource.backDetailRight || this.resource.backRight);
         }
     }
 };
 </script>
 
 <style lang="scss" scoped>
-.custom-detail-header {
+.custom-header {
     display: flex;
     flex-direction: row;
     align-items: stretch;
     justify-content: flex-start;
 }
-.custom-detail-header__right {
+.custom-header__right {
     margin-left: auto;
 }
 </style>

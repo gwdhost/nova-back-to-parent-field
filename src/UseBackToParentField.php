@@ -19,6 +19,16 @@ trait UseBackToParentField
     }
 
     /**
+     * Get the back button url from all views.
+     *
+     * @return mixed
+     */
+    protected function getBackUrl()
+    {
+        // Return back url here.
+    }
+
+    /**
      * Get the back button label from detail views.
      *
      * @return mixed
@@ -26,6 +36,26 @@ trait UseBackToParentField
     protected function getDetailBackLabel()
     {
         return __('Back');
+    }
+
+    /**
+     * Get the back button label from all views.
+     *
+     * @return mixed
+     */
+    protected function getBackLabel()
+    {
+        return __('Back');
+    }
+
+    /**
+     * Get the header right for all views.
+     *
+     * @return mixed
+     */
+    protected function getHeaderRight()
+    {
+        // Insert header right area.
     }
 
     /**
@@ -41,6 +71,9 @@ trait UseBackToParentField
         return array_merge($data,[
             'backDetailUrl' => $this->getDetailBackUrl(),
             'backDetailLabel' => $this->getDetailBackLabel(),
+            'backUrl' => $this->getBackUrl(),
+            'backLabel' => $this->getBackLabel(),
+            'backRight' => $this->getHeaderRight(),
         ]);
     }
 
