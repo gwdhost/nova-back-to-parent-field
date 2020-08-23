@@ -15,7 +15,20 @@ export default {
     props: ["resource", "resourceName", "resourceId"],
     computed: {
         backDetailUrl() {
-            return this.resource && this.resource.backDetailUrl;
+            if(this.resource && this.resource.backDetailUrl){
+                const url = this.resource.backDetailUrl;
+
+                if(url.match(/^https?:\/\//)){
+                    const args = url.replace(/^https?:\/\//, '').split('/');
+                    delete args[0];
+                    const path = args.join('/');
+                    return path;
+                }
+
+                return url;
+            }
+
+            return false;
         },
         backDetailLabel() {
             return this.resource && this.resource.backDetailLabel;
